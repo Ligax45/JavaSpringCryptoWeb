@@ -4,6 +4,5 @@ Ce projet est une application web Java Spring permettant de télécharger, chiff
 
 ## Fonctionnalités
 
-- Télécharger un fichier
 - Chiffrer et télécharger le fichier
-- Déchiffrer et télécharger le fichier chiffré
+- Déchiffrer et télécharger le fichier
