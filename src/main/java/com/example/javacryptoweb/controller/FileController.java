@@ -54,7 +54,7 @@ public class FileController {
             redirectAttributes.addFlashAttribute("message", "Fichier chiffré avec succès.");
             redirectAttributes.addFlashAttribute("fileId", fileId);
         } catch (IOException | IllegalBlockSizeException | BadPaddingException e) {
-            redirectAttributes.addFlashAttribute("message", "Failed to upload and encrypt file: " + e.getMessage());
+            redirectAttributes.addFlashAttribute("message", "Echec du téléchargement et chiffrement du fichier: " + e.getMessage());
             e.printStackTrace();
         }
 
@@ -66,7 +66,7 @@ public class FileController {
     public byte[] downloadFile(@RequestParam("fileId") String fileId) {
         byte[] encryptedFile = encryptedFiles.get(fileId);
         if (encryptedFile == null) {
-            throw new RuntimeException("File not found");
+            throw new RuntimeException("Fichier non trouvé");
         }
         return encryptedFile;
     }
@@ -76,7 +76,7 @@ public class FileController {
         byte[] encryptedFile = encryptedFiles.get(fileId);
         SecretKey key = fileKeys.get(fileId);
         if (encryptedFile == null || key == null) {
-            redirectAttributes.addFlashAttribute("message", "File or key not found");
+            redirectAttributes.addFlashAttribute("message", "Fichier ou clé non trouvé");
             return "redirect:/";
         }
 
@@ -86,7 +86,7 @@ public class FileController {
             redirectAttributes.addFlashAttribute("message", "Fichier chiffré avec succès.");
             redirectAttributes.addFlashAttribute("fileId", fileId);
         } catch (IOException | IllegalBlockSizeException | BadPaddingException e) {
-            redirectAttributes.addFlashAttribute("message", "Failed to decrypt file: " + e.getMessage());
+            redirectAttributes.addFlashAttribute("message", "Echec du decryptage du fichier: " + e.getMessage());
             e.printStackTrace();
         }
 
@@ -98,7 +98,7 @@ public class FileController {
     public byte[] downloadDecryptedFile(@RequestParam("fileId") String fileId) {
         byte[] decryptedFile = decryptedFiles.get(fileId);
         if (decryptedFile == null) {
-            throw new RuntimeException("File not found");
+            throw new RuntimeException("Fichier non trouvé");
         }
         return decryptedFile;
     }

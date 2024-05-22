@@ -39,7 +39,6 @@
         color: #007bff;
         text-decoration: none;
         display: inline-block;
-        margin-top: 10px;
       }
       a:hover {
         text-decoration: underline;
@@ -78,14 +77,12 @@
       <form method="POST" action="/decrypt">
         <input type="hidden" name="fileId" th:value="${fileId}" />
         <button type="submit">Déchriffrer le fichier</button>
-      </form>
-      <div th:if="${fileId}">
         <a
           th:href="'/downloadDecrypted?fileId=' + ${fileId}"
           download="decryptedFile"
           >Télécharger le fichier</a
         >
-      </div>
+      </form>
     </div>
   </body>
 </html>

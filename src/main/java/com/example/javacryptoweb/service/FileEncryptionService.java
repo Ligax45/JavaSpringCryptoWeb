@@ -23,7 +23,7 @@ public class FileEncryptionService  {
             keyGen.init(128);
             return keyGen.generateKey();
         } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException("Error generating encryption key", e);
+            throw new RuntimeException("Erreur generation chiffrement de la clé", e);
         }
     }
 
@@ -33,7 +33,7 @@ public class FileEncryptionService  {
             cipher.init(Cipher.ENCRYPT_MODE, key);
             return cipher.doFinal(fileBytes);
         } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException e) {
-            throw new RuntimeException("Error encrypting file", e);
+            throw new RuntimeException("Erreur chiffrement de fichier", e);
         }
     }
 
@@ -43,7 +43,7 @@ public class FileEncryptionService  {
             cipher.init(Cipher.DECRYPT_MODE, key);
             return cipher.doFinal(encryptedBytes);
         } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException e) {
-            throw new RuntimeException("Error decrypting file", e);
+            throw new RuntimeException("Erreur décryptage de fichier", e);
         }
     }
 }
