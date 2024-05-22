@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Télécharger le fichier déchriffrer</title>
+  </head>
+  <body>
+    <h1>Télécharger le fichier déchriffrer</h1>
+    <div th:if="${message}" th:text="${message}"></div>
+
+    <div th:if="${encryptedFile}">
+      <h2>Contenu du fichier chiffré:</h2>
+      <p th:text="${encryptedFile}"></p>
+      <a th:href="'/download?fileId=' + ${fileId}" download="encryptedFile.txt"
+        >Télécharger le fichier déchriffrer</a
+      >
+    </div>
+
+    <a href="/">Retour</a>
+  </body>
+</html>
